@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <table border="1">
+        <tr>
+          <th>SEGUNDO PARCIAL TEM-742
+          <br>
+           nombre: roger laura mamani
+          <br>
+           carnet: 8390722
+          </th>
+        </tr>
+    </h1>
+    </table>
+    <title>Gestión de Productos</title>
+</head>
+<body>
+    <h1>Gestión de Productos</h1>
+    
+    <a href="{{ url_for('agregar') }}">Nuevo Producto</a>
+
+    <h2>Lista de Productos</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Fecha de Vencimiento</th>
+            <th>Categoría</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.cantidad }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>{{ producto.fecha_vencimiento }}</td>
+            <td>{{ producto.categoria }}</td>
+            <td><a href="{{ url_for('editar', id=producto.id) }}">Editar</a></td>
+            <td><a href="{{ url_for('eliminar', id=producto.id) }}">Eliminar</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
